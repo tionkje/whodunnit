@@ -1,23 +1,9 @@
-import Pusher from 'pusher';
-
-import dotenv from 'dotenv'
-dotenv.config();
-
-const { PUSHER_SECRET, PUSHER_APPID, VITE_PUSHER_KEY: PUSHER_KEY } = process.env;
-
-
+import { createPusher } from '$lib/pusher';
 
 export async function get() {
-  const pusher = new Pusher({
-    appId:PUSHER_APPID,
-    key: PUSHER_KEY,
-    secret: PUSHER_SECRET,
-    cluster: 'eu',
-    useTLS: true,
-  });
+  const pusher = createPusher();
 
-
-  pusher.trigger('my-channel', 'my-event', {
+  pusher.trigger('presence-channel', 'my-event', {
     message: 'hello world',
   });
 
