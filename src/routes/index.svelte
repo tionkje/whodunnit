@@ -25,6 +25,7 @@
     // });
 
     channel.bind('pusher:subscription_succeeded', () => {
+      members = [];
       channel.members.each((m) => members.push(m));
       members = members;
     });
