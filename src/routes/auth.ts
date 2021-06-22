@@ -14,7 +14,7 @@ export async function post({ headers, rawBody }) {
   // // Primitive auth: the client self-identifies. In your production app,
   // // the client should provide a proof of identity, like a session cookie.
   const user_id = cookies.user_id;
-  const presenceData = { user_id, user_info: { name: body.name } };
+  const presenceData = { user_id, user_info: { name: body.name, score:body.score } };
   const auth = pusher.authenticate(socketId, channel, presenceData);
 
   return { body: auth };
